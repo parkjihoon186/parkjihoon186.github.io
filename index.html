@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio</title>
+    <title>DataHero - 빅데이터 분석가</title>
     <style>
         * {
             margin: 0;
@@ -13,202 +13,75 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             color: white;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #00d4ff, #5b73e8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #00d4ff;
-            transform: translateY(-2px);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #00d4ff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
+        .hero-section {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
         }
 
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-            animation: pulse 4s ease-in-out infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(0,255,255,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,0,255,0.3)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,0,0.3)"/><circle cx="70" cy="20" r="1.2" fill="rgba(0,255,0,0.3)"/></svg>') repeat;
+            animation: float 20s linear infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.1; }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(0px) translateX(-5px); }
+            75% { transform: translateY(-15px) translateX(-10px); }
+            100% { transform: translateY(0px) translateX(0px); }
         }
 
         .hero-content {
+            text-align: center;
             z-index: 2;
             position: relative;
-            max-width: 800px;
         }
 
-        .hero h1 {
+        .hero-title {
             font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-            background: linear-gradient(45deg, #00d4ff, #5b73e8, #ff6b6b);
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            color: #00d4ff;
-            font-weight: 600;
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.7)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.7)); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
             line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #00d4ff;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .cta-primary {
-            background: linear-gradient(45deg, #00d4ff, #5b73e8);
-            color: white;
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid #00d4ff;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            color: rgba(255, 255, 255, 0.7);
+            animation: fadeInUp 1s ease-out 1s both;
         }
 
         @keyframes fadeInUp {
@@ -222,17 +95,58 @@
             }
         }
 
-        /* Skills Section */
-        .skills {
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .skills-section {
             padding: 100px 0;
             background: rgba(0, 0, 0, 0.3);
         }
 
-        .skills h2 {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
             text-align: center;
             font-size: 3rem;
             margin-bottom: 3rem;
-            background: linear-gradient(45deg, #00d4ff, #5b73e8);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -241,570 +155,402 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .skill-category {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .skill-category h3 {
-            color: #00d4ff;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-item {
-            background: rgba(0, 212, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .skill-item:hover {
-            background: rgba(0, 212, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 0;
-        }
-
-        .portfolio h2 {
+            padding: 30px;
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 4rem;
-            background: linear-gradient(45deg, #00d4ff, #5b73e8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .portfolio-card::before {
+        .skill-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,212,255,0.1), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .portfolio-card:hover::before {
-            left: 100%;
-        }
-
-        .portfolio-card:hover {
+        .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
         }
 
-        .portfolio-card h3 {
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00ffff;
+        }
+
+        .skill-title {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        .portfolio-card p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
+        .skill-description {
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
         }
 
-        .portfolio-tags {
+        .projects-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #00ffff;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 10px;
         }
 
-        .portfolio-tag {
-            background: rgba(91, 115, 232, 0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
+        .tech-tag {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.9rem;
-            border: 1px solid rgba(91, 115, 232, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
         }
 
-        .portfolio-metrics {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-metrics h4 {
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .metrics-list {
-            list-style: none;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .metrics-list li {
-            margin-bottom: 0.3rem;
-        }
-
-        .portfolio-link {
-            color: #00d4ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-link:hover {
-            color: #5b73e8;
-            text-decoration: underline;
-        }
-
-        /* Contact Section */
-        .contact {
+        .contact-section {
             padding: 100px 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #00d4ff, #5b73e8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
         }
 
-        .contact-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
-        .contact-card:hover {
+        .contact-item:hover {
+            color: #00ffff;
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .contact-icon {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
+            color: #00ffff;
         }
 
-        .contact-card h3 {
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .contact-links {
+        .nav {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .contact-link {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
+        .nav-item {
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
-        .contact-link:hover {
-            background: rgba(0, 212, 255, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .nav-item:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            
+            .section-title {
+                font-size: 2rem;
             }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
+            
             .contact-info {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
                 flex-direction: column;
                 align-items: center;
+                gap: 30px;
+            }
+            
+            .nav {
+                position: relative;
+                top: auto;
+                right: auto;
+                justify-content: center;
+                margin: 20px 0;
             }
         }
 
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Data visualization accent */
-        .data-viz-bg {
+        .scroll-indicator {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            animation: bounce 2s infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">📊 DATA ANALYST</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <nav class="nav">
+        <a href="#skills" class="nav-item">스킬</a>
+        <a href="#projects" class="nav-item">프로젝트</a>
+        <a href="#contact" class="nav-item">연락처</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="data-viz-bg"></div>
+    <section class="hero-section">
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Data Analyst</h1>
-            <p class="subtitle">데이터로 인사이트를 찾는 전문가</p>
-            <p>복잡한 데이터를 명확한 비즈니스 인사이트로 변환하여 의사결정을 지원합니다. 
-            Python, SQL, Tableau를 활용한 데이터 분석과 시각화를 통해 가치를 창출합니다.</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">3+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Projects Completed</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Data Sources</span>
-                </div>
-            </div>
-            
-            <div class="cta-buttons">
-                <a href="#portfolio" class="cta-button cta-primary">프로젝트 보기</a>
-                <a href="#contact" class="cta-button cta-secondary">연락하기</a>
-            </div>
+            <h1 class="hero-title">DATA HERO</h1>
+            <h2 class="hero-subtitle">빅데이터 분석가</h2>
+            <p class="hero-description">
+                데이터의 바다에서 숨겨진 인사이트를 발굴하고, 
+                복잡한 문제를 해결하는 데이터 히어로입니다. 
+                머신러닝과 통계 분석의 힘으로 비즈니스의 미래를 예측합니다.
+            </p>
+            <a href="#projects" class="cta-button">프로젝트 보기</a>
+        </div>
+        <div class="scroll-indicator">
+            <div style="font-size: 2rem;">↓</div>
+            <div>스크롤하여 더 보기</div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills-section">
         <div class="container">
-            <h2 class="fade-in">Technical Skills</h2>
-            
+            <h2 class="section-title">슈퍼 파워</h2>
             <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>📊 데이터 분석</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">R</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Scikit-learn</span>
+                <div class="skill-card">
+                    <div class="skill-icon">🧠</div>
+                    <h3 class="skill-title">머신러닝 & AI</h3>
+                    <p class="skill-description">
+                        Python, TensorFlow, scikit-learn을 활용한 
+                        예측 모델링 및 딥러닝 솔루션 개발
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <h3 class="skill-title">데이터 시각화</h3>
+                    <p class="skill-description">
+                        Tableau, Power BI, D3.js를 통한 
+                        인터랙티브 대시보드 및 시각화 제작
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3 class="skill-title">빅데이터 처리</h3>
+                    <p class="skill-description">
+                        Hadoop, Spark, Kafka를 활용한 
+                        대용량 데이터 파이프라인 구축
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📈</div>
+                    <h3 class="skill-title">통계 분석</h3>
+                    <p class="skill-description">
+                        R, SPSS를 활용한 고급 통계 분석 및 
+                        A/B 테스트 설계와 분석
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <h3 class="skill-title">클라우드 플랫폼</h3>
+                    <p class="skill-description">
+                        AWS, GCP, Azure 기반 데이터 인프라 
+                        구축 및 MLOps 파이프라인 관리
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
+                    <h3 class="skill-title">비즈니스 인텔리전스</h3>
+                    <p class="skill-description">
+                        데이터 기반 의사결정 지원 및 
+                        KPI 설계와 성과 분석
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">히어로 미션</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🚀</div>
+                    <div class="project-content">
+                        <h3 class="project-title">고객 이탈 예측 시스템</h3>
+                        <p class="project-description">
+                            머신러닝 알고리즘을 활용하여 고객 이탈을 95% 정확도로 예측하는 
+                            실시간 모니터링 시스템을 구축했습니다.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-category fade-in">
-                    <h3>📈 데이터 시각화</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Tableau</span>
-                        <span class="skill-item">Power BI</span>
-                        <span class="skill-item">Matplotlib</span>
-                        <span class="skill-item">Seaborn</span>
-                        <span class="skill-item">Plotly</span>
-                        <span class="skill-item">D3.js</span>
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h3 class="project-title">실시간 추천 엔진</h3>
+                        <p class="project-description">
+                            협업 필터링과 콘텐츠 기반 필터링을 결합한 하이브리드 추천 시스템으로 
+                            사용자 만족도 40% 향상을 달성했습니다.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Apache Spark</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-category fade-in">
-                    <h3>🗄️ 데이터베이스</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">MySQL</span>
-                        <span class="skill-item">PostgreSQL</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">BigQuery</span>
-                        <span class="skill-item">Redshift</span>
-                        <span class="skill-item">Snowflake</span>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <h3>☁️ 클라우드 & 도구</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">AWS</span>
-                        <span class="skill-item">Google Cloud</span>
-                        <span class="skill-item">Azure</span>
-                        <span class="skill-item">Jupyter</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">Docker</span>
+                <div class="project-card">
+                    <div class="project-image">💹</div>
+                    <div class="project-content">
+                        <h3 class="project-title">금융 사기 탐지 AI</h3>
+                        <p class="project-description">
+                            딥러닝 기반 이상 거래 탐지 시스템으로 금융 사기를 실시간으로 
+                            감지하여 손실을 60% 감소시켰습니다.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Airflow</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="fade-in">Portfolio Projects</h2>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-card fade-in">
-                    <h3>E-commerce 고객 행동 분석</h3>
-                    <p>온라인 쇼핑몰의 고객 구매 패턴을 분석하여 마케팅 전략을 최적화하고 매출 증대 방안을 제시했습니다.</p>
-                    
-                    <div class="portfolio-metrics">
-                        <h4>주요 성과</h4>
-                        <ul class="metrics-list">
-                            <li>• 고객 세분화를 통한 타겟 마케팅 효율 35% 증대</li>
-                            <li>• 추천 시스템 도입으로 교차 판매 20% 증가</li>
-                            <li>• 고객 이탈 예측 모델 정확도 85% 달성</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Python</span>
-                        <span class="portfolio-tag">SQL</span>
-                        <span class="portfolio-tag">Tableau</span>
-                        <span class="portfolio-tag">Machine Learning</span>
-                    </div>
-                    <a href="#" class="portfolio-link">자세히 보기 →</a>
+            <h2 class="section-title">히어로 연락처</h2>
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 30px;">
+                데이터의 힘이 필요한 미션이 있다면 언제든 연락하세요!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <span>datahero@email.com</span>
                 </div>
-
-                <div class="portfolio-card fade-in">
-                    <h3>재고 최적화 대시보드</h3>
-                    <p>실시간 재고 데이터를 분석하여 재고 부족과 과잉 재고를 방지하는 최적화 시스템을 구축했습니다.</p>
-                    
-                    <div class="portfolio-metrics">
-                        <h4>주요 성과</h4>
-                        <ul class="metrics-list">
-                            <li>• 재고 비용 30% 절감</li>
-                            <li>• 품절률 15% 감소</li>
-                            <li>• 재고 회전율 25% 개선</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Power BI</span>
-                        <span class="portfolio-tag">Excel</span>
-                        <span class="portfolio-tag">DAX</span>
-                        <span class="portfolio-tag">SQL Server</span>
-                    </div>
-                    <a href="#" class="portfolio-link">자세히 보기 →</a>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <span>linkedin.com/in/datahero</span>
                 </div>
-
-                <div class="portfolio-card fade-in">
-                    <h3>웹 트래픽 분석 시스템</h3>
-                    <p>Google Analytics 데이터를 활용하여 웹사이트 성능을 분석하고 사용자 경험 개선 방안을 도출했습니다.</p>
-                    
-                    <div class="portfolio-metrics">
-                        <h4>주요 성과</h4>
-                        <ul class="metrics-list">
-                            <li>• 페이지 이탈률 40% 감소</li>
-                            <li>• 전환율 25% 증가</li>
-                            <li>• 평균 세션 시간 50% 증가</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Google Analytics</span>
-                        <span class="portfolio-tag">R</span>
-                        <span class="portfolio-tag">Shiny</span>
-                        <span class="portfolio-tag">ggplot2</span>
-                    </div>
-                    <a href="#" class="portfolio-link">자세히 보기 →</a>
+                <div class="contact-item">
+                    <div class="contact-icon">🐙</div>
+                    <span>github.com/datahero</span>
                 </div>
-
-                <div class="portfolio-card fade-in">
-                    <h3>금융 데이터 예측 모델</h3>
-                    <p>주식 시장 데이터를 활용하여 시계열 분석과 머신러닝을 통한 가격 예측 모델을 개발했습니다.</p>
-                    
-                    <div class="portfolio-metrics">
-                        <h4>주요 성과</h4>
-                        <ul class="metrics-list">
-                            <li>• 예측 정확도 78% 달성</li>
-                            <li>• 리스크 관리 효율성 45% 개선</li>
-                            <li>• 포트폴리오 수익률 20% 증가</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Python</span>
-                        <span class="portfolio-tag">TensorFlow</span>
-                        <span class="portfolio-tag">LSTM</span>
-                        <span class="portfolio-tag">Jupyter</span>
-                    </div>
-                    <a href="#" class="portfolio-link">자세히 보기 →</a>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <span>010-1234-5678</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="fade-in">Contact Me</h2>
-            <p class="fade-in">데이터 분석 프로젝트나 협업에 관심이 있으시다면 언제든 연락주세요!</p>
-            
-            <div class="contact-info fade-in">
-                <div class="contact-card">
-                    <span class="contact-icon">📧</span>
-                    <h3>Email</h3>
-                    <p>analyst@example.com</p>
-                </div>
-                
-                <div class="contact-card">
-                    <span class="contact-icon">📱</span>
-                    <h3>Phone</h3>
-                    <p>+82 10-1234-5678</p>
-                </div>
-                
-                <div class="contact-card">
-                    <span class="contact-icon">📍</span>
-                    <h3>Location</h3>
-                    <p>Seoul, South Korea</p>
-                </div>
-            </div>
-            
-            <div class="contact-links fade-in">
-                <a href="mailto:analyst@example.com" class="contact-link">📧 Email 보내기</a>
-                <a href="https://linkedin.com" class="contact-link">💼 LinkedIn</a>
-                <a href="https://github.com" class="contact-link">💻 GitHub</a>
-                <a href="#" class="contact-link">📄 Resume</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Data Analyst Portfolio. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // 부드러운 스크롤 효과
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -818,17 +564,7 @@
             });
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-            } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
-            }
-        });
-
-        // Fade in animation on scroll
+        // 스크롤 시 요소 페이드인 효과
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -837,28 +573,54 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
+        // 관찰할 요소들
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
 
-        // Counter animation for hero stats
-        function animateCounter(element, start, end, duration) {
-            let startTimestamp = null;
-
-            function step(timestamp) {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                element.textContent = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                }
+        // 마우스 커서 효과
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, transparent 70%);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transition: transform 0.1s ease;
+                `;
+                document.body.appendChild(newCursor);
             }
+            
+            const currentCursor = document.querySelector('.cursor');
+            currentCursor.style.left = e.clientX - 10 + 'px';
+            currentCursor.style.top = e.clientY - 10 + 'px';
+        });
 
-            requestAnimationFrame(step);
-        }
+        // 스킬 카드 호버 시 추가 효과
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.background = 'rgba(0, 255, 255, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.05)';
+            });
+        });
+    </script>
+</body>
+</html>
